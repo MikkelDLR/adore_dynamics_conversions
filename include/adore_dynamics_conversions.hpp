@@ -20,6 +20,7 @@
 #include "adore_ros2_msgs/msg/traffic_participant_set.hpp"
 #include "adore_ros2_msgs/msg/trajectory.hpp"
 #include "adore_ros2_msgs/msg/trajectory_transpose.hpp"
+#include "adore_ros2_msgs/msg/traffic_signals.hpp"
 #include "adore_ros2_msgs/msg/vehicle_command.hpp"
 #include "adore_ros2_msgs/msg/vehicle_info.hpp"
 #include "adore_ros2_msgs/msg/vehicle_state_dynamic.hpp"
@@ -27,6 +28,7 @@
 
 #include "dynamics/traffic_participant.hpp"
 #include "dynamics/trajectory.hpp"
+#include "dynamics/traffic_signal.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
@@ -84,6 +86,8 @@ TrafficParticipant to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipant& 
 adore_ros2_msgs::msg::TrafficParticipantSet to_ros_msg( const TrafficParticipantSet& participant_set );
 
 TrafficParticipantSet to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipantSet& msg );
+
+TrafficSignalSet to_cpp_type( const adore_ros2_msgs::msg::TrafficSignals& msg );
 
 adore_ros2_msgs::msg::PhysicalVehicleParameters to_ros_msg( const PhysicalVehicleParameters& cpp );
 
