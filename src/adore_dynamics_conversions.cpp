@@ -407,6 +407,44 @@ to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipantSet& msg )
   return participant_set;
 }
 
+dynamics::TrafficSignalSet
+to_cpp_type( const adore_ros2_msgs::msg::TrafficSignals& msg )
+{
+  dynamics::TrafficSignalSet traffic_signals;
+
+  for ( const auto& signal_msg : msg.signals )
+  {
+    dynamics::TrafficSignal signal;
+
+    signal.x               = signal_msg.x;
+    signal.y               = signal_msg.y;
+    signal.signal_group_id = static_cast<int>( signal_msg.signal_group_id );
+
+    switch ( signal_msg.state )
+    {
+      case adore_ros2_msgs::msg::TrafficSignal::RED:
+        signal.state = adore::dynamics::RED;
+        break;
+
+      case adore_ros2_msgs::msg::TrafficSignal::YELLOW:
+        signal.state = adore::dynamics::YELLOW;
+        break;
+
+      case adore_ros2_msgs::msg::TrafficSignal::GREEN:
+        signal.state = adore::dynamics::GREEN;
+        break;
+
+      default:
+        signal.state = adore::dynamics::UNKNOWN;
+        break;
+    }
+
+    traffic_signals.signals[signal.signal_group_id] = signal;
+  }
+
+  return traffic_signals;
+}
+
 adore_ros2_msgs::msg::PhysicalVehicleParameters
 to_ros_msg( const PhysicalVehicleParameters& cpp )
 {
