@@ -24,6 +24,7 @@
 #include "adore_ros2_msgs/msg/vehicle_info.hpp"
 #include "adore_ros2_msgs/msg/vehicle_state_dynamic.hpp"
 #include "adore_ros2_msgs/msg/vehicle_state_extended.hpp"
+#include <adore_dynamics_conversions.hpp>
 
 #include "dynamics/traffic_participant.hpp"
 #include "dynamics/trajectory.hpp"
@@ -32,6 +33,9 @@
 #include "rclcpp/rclcpp.hpp"
 #include "tf2/LinearMath/Quaternion.h"
 #include "tf2/utils.h"
+#include "geometry_msgs/msg/point.hpp"
+#include "dynamics/maneuver_advice.hpp"
+#include "adore_ros2_msgs/msg/maneuver_advice.hpp"
 
 namespace adore
 {
@@ -88,6 +92,11 @@ TrafficParticipantSet to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipan
 adore_ros2_msgs::msg::PhysicalVehicleParameters to_ros_msg( const PhysicalVehicleParameters& cpp );
 
 PhysicalVehicleParameters to_cpp_type( const adore_ros2_msgs::msg::PhysicalVehicleParameters& msg );
+
+ManeuverAdvice to_cpp_type( const adore_ros2_msgs::msg::ManeuverAdvice& msg );
+
+adore_ros2_msgs::msg::ManeuverAdvice to_ros_msg( const ManeuverAdvice& advice );
+
 } // namespace conversions
 } // namespace dynamics
 } // namespace adore
